@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+/* @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'); */
+
+:root /*declaring variables*/
+{
+    --primary: #494b53;
+    --secondary: #ebebeb;
+    --error: #da0f41;
+    
+}
+
+*{
+
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
+    color: var(--primary);
+}
+
+body
+{
+    background: #fafafa;
+
+}
+a
+{
+    text-decoration: none;
+}
+
+button, .btn
+{
+    background: var(--secondary);
+    border-radius: 8px;
+    border: 0;
+    padding: 8px 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+}
+
+button:hover, .btn :hover
+{
+    background-color: var(--primary);
+    color: azure;
+}
+
+button:disabled
+{
+    opacity: 0.5;
+    color: var(--primary);
+    background-color: var(--secondary);
+    cursor: not-allowed;
+}
+
+form
+{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow:  1px 2px 3px rgba(50, 50, 50, 0.05);
+    border: 2.5px solid var(--secondary);
+    background: azure;
+}
+
+input, textarea
+{
+    border: 0;
+    border-bottom: 1px solid var(--secondary);
+    padding: 10px;
+    outline: none;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 20px auto;
+}

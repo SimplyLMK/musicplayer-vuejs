@@ -1,19 +1,70 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Login from '../views/Login.vue'
+import Signup from '../views/Signup.vue'
+import createPlaylist from '../views/createPlaylist.vue'
+import PlaylistDetails from '../views/PlaylistDetails.vue'
+import library from '../views/library.vue'
+import { projectAuth } from '@/firebase/config'
+import me from '../views/me.vue'
 
-const routes = [
+
+const route_guard = (to, from, next) =>
+{
+  let user = projectAuth.currentUser
+  if(!user)
+  {
+    next({name: 'Login'});
+  }
+  else
+  {
+    next();
+  }
+}
+
+
+const routes = [ 
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    beforeEnter: route_guard
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup
+  },
+  {
+    path:'/create',
+    name: 'createPlaylist',
+    component: createPlaylist,
+    beforeEnter: route_guard
+  },
+  {
+    path:'/playlists/:id',
+    name: 'PlaylistDetails',
+    component: PlaylistDetails,
+    beforeEnter: route_guard,
+    props: true
+  },
+  {
+    path:'/Library',
+    name: 'library',
+    component: library,
+    beforeEnter: route_guard,
+    props: true
+  },
+  {
+    path:'/user',
+    name:'me',
+    component: me,
+    beforeEnter: route_guard
   }
 ]
 
